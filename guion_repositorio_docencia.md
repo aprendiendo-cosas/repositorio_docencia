@@ -101,71 +101,46 @@ Los repositorios en los que se almacena la información de este tipo de acto doc
 >   + Te: Sesión teórica
 >   + TP: Sesión teórico-práctica
 
+
+
 Todos los actos docentes comparten la misma licencia de uso: GNU GPLv3. Además, casi todos ellos tienen comparten el mismo árbol de directorios:
+
++ *entregas*: Cuando esta carpeta está presente almacena las entregas que hacen los alumnos y que están relacionados con el acto docente en cuestión. No es registrado por GitHub.
 + *imagenes*: Carpeta en la que se guardan las imágenes que se muestran en el guión.
 + *preparacion*: En esta carpeta se almacenan los archivos temporales y otro material que no está terminado. Esta carpeta no se almacena en el repositorio de GitHub.
 + *presentacion*: Aquí se guardan los archivos powerpoint, mapas mentales o presentaciones de prezi que se usan en la clase.
 + *releases*: Esta carpeta contiene los archivos .zip que corresponden con las versiones anteriores del acto docente en cuestión. No es registrado por GitHub.
 + *videos_sesiones*: Aquí se guardan los vídeos de las grabaciones del acto docente. Tampoco se registra en GitHub.
 + *guion\_[nombre_acto_docente]\_[asignatura]\_[titulacion].md*: Corresponde con el guión en el que se enlazan los materiales descritos arriba.
++ *guion\_[nombre_acto_docente]\_[asignatura]\_[titulacion].html*: Contiene la misma información que el archivo anterior, pero en formato html para su publicación. 
 
 A continuación se muestra el contenido del archivo *gitignore* de los repositorios específicos:
 
-
+ ```
+/preparacion
+/releases
+/videos_sesiones
+/entregas
+.DS_Store
+ ```
 
 
 
 #### Actos docentes generales
 
-Los actos docentes específicos se pueden agrupar en otros generales que son asimilables a la idea de asignatura. Estas asignaturas se almacenan en un repositorio de Github que tiene un archivo Markdown por cada curso académico. En el mismo 
+Los actos docentes específicos se pueden agrupar en otros generales que son asimilables a la idea de asignatura. Estas asignaturas se almacenan en un repositorio de Github que tiene un archivo Markdown por cada curso académico. En este archivo se listan los actos docentes que componen la asignatura, así como enlaces a los mismos. La siguiente imagen muestra el aspecto de uno de estos listados:
 
 
 
+![estructura](https://raw.githubusercontent.com/aprendiendo-cosas/repositorio_docencia/main/imagenes/asignatura.png)
 
+
+
+VAS POR AQUÍ, CHAVAL
 
 * 
-
-**Cómo ordenar videos en youtube**
-
-
-
-* Listas de reproducción: añadir etiquetas para que los videos vayan a varias listas de reproducción que sean coherentes con los elementos de la escalas a las que trabajo. Me explico. Un video puede ir a la lista de _docencia_UCO_Ecologia_2019-2020 _y también a otra llamada _practica_competencia_intraespecifica_. 
-* Para hacer que esto funcione debes de crear etiquetas con sentido. 
-    * Curso académico.
-    * Asignatura, grado.
-    * Teoría o prácticas.
-    * Español o inglés.
-    * Nombre del evento docente: ej. sesiones de prácticas sobre competencia intraespecífica. Este nombre debe de coincidir con el del repositorio de Github. 
-* Listas de reproducción:
-    * Docencia ecología UCO (CCAA). Curso 2019-2020.
-        * Si etiqueta es: UCO ecología CCAA 2019-2020
-* Forma de nombrar los videos
-    * [tipo]_[tema]_[ddmmaaaa]_[x/x]
-        * tipo: Teoría o Práctica
-        * tema: nombre del tema abordado
-        * Fecha
-        * x/x: uno de tantos.
-
-
-
-**Actualización de estado en enero de 2021. Al escribir esto no he repasado lo anterior**
-
-
-
-* Cada acto docente está en un repositorio. Cada versión es una release que se almacena en una carpeta ignorada por Git. Todo ello está en el drive.
-* en cada repositorio hay una carpeta llamada “preparacion” que contiene los archivos usados para preparar el acto docente. Esta carpeta no es gestionada por Git.
 * las versiones de cada acto docente que afectan a distintas titulaciones, se consideran como forks o branches diferentes. Aún tengo que ver cómo funciona esta pana. Es decir, no sé bien cómo gestionar esto en local. En git parece fácil. En local no. Como ejejmplo reciente está la práctica de biodiversidad para el grado de UCO y para el Geoforest…
-* Además de los repositorios que describen los actos docentes, en Github.com hay otros que contienen índices a los contenidos de cada asignatura. Estos repositorios son los que crean la entidad “asignatura”. Tienen tantas páginas de wiki como años académicos hay para cada asignatura. 
-* Me falta organizar algo para llevar un control de los repositorios en local, así como en github.com. Para que no haya redundancia
-* criterios de denominación de repositorios:
-    * Repositorios de asignatura: [asignatura]_[grado]_[institución]
-    * Repositorios de acto docente: [tipo]_[nombre_acto_docente]_[asignatura]_[grado]. 
-        * Tipos:
-            * A: Actividad
-            * E: ejercicio.
-            * T: Tarea. [aquí](https://twitter.com/chacon_piris/status/1366089880141508610?s=21) detalles sobre definiciones de los tres tipos anteriores.
-            * P: Práctica
-            * Te: Teoría
+* 
 * Criterios de denominación de releases: [año inicio curso académico - año final curso académico]. Ej 2019-2020.
 * Posibles carpetas y contenido en el repositorio (en cursiva las que están en gitignore) que podría formar parte de una plantilla.
     * descargables: material útil para ser descargado.
