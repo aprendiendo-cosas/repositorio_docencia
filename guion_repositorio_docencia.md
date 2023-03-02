@@ -66,13 +66,13 @@ El sistema propuesto aborda las dificultades anteriores y se basa en una serie d
 
 La siguiente figura muestra la estructura del sistema propuesto:
 
-![estructura](https://raw.githubusercontent.com/aprendiendo-cosas/repositorio_docencia/main/imagenes/estructura_repositorios.png?token=GHSAT0AAAAAAB5C54OOU3ZQIOUDM4NC2QFIY7FGIKQ)
+![estructura](https://raw.githubusercontent.com/aprendiendo-cosas/repositorio_docencia/main/imagenes/estructura_repositorios.png)
 
 *Estructura general de todo el sistema. Se representan tres actos docentes elementales, que corresponden con aspectos teóricos ("Tema 8. Competencia interespecífica") y con aspectos prácticos ("Practica cuantificación tendencia NDVI" y "Teledetección"). En cada uno de ellos hay una evolucion continua de su contenido. Esto se representa por los sucesivos commits que afectan a los distintos elementos que lo componen (presentaciones, mapas mentales, bibliografía, código, etc.). Cada cierto tiempo se alcanza un estado que permite generar una versión concreta. Esto se "fija" mediante la creación de una release. Dado que el repositorio está conectado con Zenodo, se crea un DOI cada vez que se genera una release. Las distintas versiones de los actos docentes fundamentales ("hijos") se agrupan en otros repositorios que corresponden con asignaturas ("Ecología CCAA. 2019-2020", "Ecología CCAA. 2020-2021", etc.). En estos repositorios generales se pueden crear wikis o bien páginas html con enlaces a las releases de los actos docentes elementales*
 
 
 
-### Estructura de un acto docente
+### Estructura y tipos de actos docentes
 
 Como hemos comentado más arriba, hay dos tipos de actos docentes. Los denominados "elementales" (que corresponden con temas de teoría, ejercicios o prácticas) y los "generales" (que agrupan varios elementos de los anteriores y configuran asignaturas). Cada uno de estos dos tipos tiene distinta estructura interna:
 
@@ -83,6 +83,33 @@ Como hemos comentado más arriba, hay dos tipos de actos docentes. Los denominad
 Un acto docente elemental puede contener multitud de elementos que se usan en el proceso de aprendizaje: presentaciones (powerpoint, canvas, prezi, etc.), mapas mentales, artículos, vídeos, etc. Para suministrar a los estudiantes toda esta información de manera ordenada y sistematizada, se organiza todo dentro de un guión. Se trata de un documento de texto (escrito en Markdown) que contiene información sobre la secuencia de actividades que ocurren en el acto docente (sesión teórica, práctica, salida de campo, laboratorio, etc.). Este guión tiene también metadatos (versión del documento, asignatura y grado al que va dirigido, autor, etc.). Además este documento contiene enlaces a elementos que se usan durante la sesión docente: videos de youtube, archivos en gdrive o en el moodle, etc. Los guiones tienen una estructura parecida y un diseño homogéneo. La siguiente figura muestra el encabezado tipo de un guión.
 
 
+![estructura](https://raw.githubusercontent.com/aprendiendo-cosas/repositorio_docencia/main/imagenes/portada_guion.png)
+
+
+
+Los repositorios en los que se almacena la información de este tipo de acto docente se nombran de la siguiente forma:
+
+> [tipo_acto_docente]\_[nombre_acto_docente]\_[asignatura]\_[titulación]
+>
+> Siendo:
+>
+> + [tipo_acto_docente]:
+>   + A: Actividad. 
+>   + C: Salida de campo.
+>   + P: práctica
+>   + T: Tarea
+>   + Te: Sesión teórica
+>   + TP: Sesión teórico-práctica
+
+Todos los actos docentes comparten la misma licencia de uso: GNU GPLv3. Además, casi todos ellos tienen comparten el mismo árbol de directorios:
++ *imagenes*: Carpeta en la que se guardan las imágenes que se muestran en el guión.
++ *preparacion*: En esta carpeta se almacenan los archivos temporales y otro material que no está terminado. Esta carpeta no se almacena en el repositorio de GitHub.
++ *presentacion*: Aquí se guardan los archivos powerpoint, mapas mentales o presentaciones de prezi que se usan en la clase.
++ *releases*: Esta carpeta contiene los archivos .zip que corresponden con las versiones anteriores del acto docente en cuestión. No es registrado por GitHub.
++ *videos_sesiones*: Aquí se guardan los vídeos de las grabaciones del acto docente. Tampoco se registra en GitHub.
++ *guion\_[nombre_acto_docente]\_[asignatura]\_[titulacion].md*: Corresponde con el guión en el que se enlazan los materiales descritos arriba.
+
+A continuación se muestra el contenido del archivo *gitignore* de los repositorios específicos:
 
 
 
@@ -90,42 +117,13 @@ Un acto docente elemental puede contener multitud de elementos que se usan en el
 
 #### Actos docentes generales
 
-
-
-Cada “acto docente” 
-
-La unidad de trabajo de todo esto es un objeto que hemos llamado “guión”. 
-
-Tanto los guiones como todo el material acompañante (presentaciones, bases de datos, geoinformación, etc.) se almacenan (por ahora) en mi cuenta de go.ugr.es. Las carpetas están ordenadas según mi criterio.
-
-La idea es subir los guiones (que arrastran enlaces a material) a github en formato markdown. Desde allí puedo hacer un control de cambios y documentar la evolución de cada guión. De hecho, con el tiempo, github sería el único sitio en el que estarían los guiones. La página en github sería como el punto de entrada a todo el material docente. 
-
-**Estructura detallada. Ejemplo de caso de uso de un repositorio de acto docente.**
+Los actos docentes específicos se pueden agrupar en otros generales que son asimilables a la idea de asignatura. Estas asignaturas se almacenan en un repositorio de Github que tiene un archivo Markdown por cada curso académico. En el mismo 
 
 
 
-* Creo guión rico en enlaces usando typora. Lo guardo en la carpeta correspondiente de gdrive. 
-* Creo un repo de github con el objeto docente en cuestión. Dicho repo contiene:
-    * Archivos que subo directamente al repositorio o bien enlaces a los mismos en zenodo.
-* Criterios de denominación de repos de actos docentes. Por ahora hay uno definido por mí. Sugiero mantener el mismo criterio para todos los usuarios. Esto facilitará la búsqueda de información. 
-    * [Tipo de acto docente]_[nombre corto acto docente]_[nombre corto asignatura]_[Universidad], donde:
-        * [Tipo de acto docente]:
-            * A: Actividad de estudiante.
-            * T: Tarea de estudiante.
-            * C: Salida de campo
-            * Te: Sesión teórica
-            * P: Sesión práctica
-            * TP: Sesión teórico-práctica
-        * [nombre corto acto docente]: pues eso…. Ejemplo: sp_amenazadas
-        * [nombre corto asignatura]:
-            * ecologia_ccaa
-            * ecologia_I_bio
-            * ecologia_II_bio
-            * etc
-            * 
-    * empieza por “teaching_”
-* Subo el markdown anterior a mi blog (exportado previamente a html). Básicamente para que se vean los &lt;iframe> que pueda poner (mapas y flujos de trabajo).
-* Subo enlaces a todo lo anterior al moodle de la UCO o al classroom de la UGR. Enlazar objetos externos a la versión que haya en github, que está abierta por definición.
+
+
+* 
 
 **Cómo ordenar videos en youtube**
 
@@ -148,17 +146,7 @@ La idea es subir los guiones (que arrastran enlaces a material) a github en form
         * Fecha
         * x/x: uno de tantos.
 
-**Estructura del repositorio. Definiciones.**
 
-
-
-* Objeto docente fundamental: Es el objeto mínimo que no se puede dividir en otro más pequeño. Hay varios tipos.
-    * Sesión teórica.
-    * Sesión práctica.
-* Cada objeto docente fundamental se corresponde con un repositorio de Github. En cada repositorio puede haber archivos con código, imágenes, etc. Se puede organizar como una wiki.
-* El versionado de los archivos se gestiona desde Github y también desde Zenodo. En esta última plataforma puedes tener n versiones de un archivo (o paquete de archivos). Cada versión tiene un DOI, pero en la plataforma se puede trazar el versionado.
-* Cada vez que hay una versión consolidada o utilizable de un objeto docente, se puede hacer una release con Github. Esa release tiene forma de .zip que, automáticamente adquiere un DOI a través de Zenodo (porque ambas plataformas están unidas). 
-* Los objetos docentes fundamentales se agrupan en otros de nivel superior: asignaturas, sesiones conjuntas de prácticas, etc. Para documentar cada uno de estos objetos docentes “superiores” se usa también Github. 
 
 **Actualización de estado en enero de 2021. Al escribir esto no he repasado lo anterior**
 
